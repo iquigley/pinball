@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PinballMachine as PinballMachine;
+use App\Manufacturer as Manufacturer;
+use App\MPU as MPU;
+use App\PinballType as PinballType;
+use App\Theme as Theme;
+use App\Artist as Artist;
 
 class PinballMachineController extends Controller
 {
@@ -25,7 +30,16 @@ class PinballMachineController extends Controller
      */
     public function create()
     {
-        //
+        $manufacturers = Manufacturer::all();
+        $mpus = MPU::all();
+        $types = PinballType::all();
+        $themes = Theme::all();
+        $artists = Artist::all();
+        return view('pinball_machines.create')->with('manufacturers', $manufacturers)
+                                              ->with('mpus', $mpus)
+                                              ->with('types', $types)
+                                              ->with('themes', $themes)
+                                              ->with('artists', $artists);
     }
 
     /**
@@ -36,7 +50,8 @@ class PinballMachineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = PinballMachine::createPinballMachine($request);
+        return redirect()->action('PinballMachineController@show', [$id]);
     }
 
     /**
@@ -60,7 +75,18 @@ class PinballMachineController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pinballMachine = PinballMachine::loadRelatedObjectById($id);
+        $manufacturers = Manufacturer::all();
+        $mpus = MPU::all();
+        $types = PinballType::all();
+        $themes = Theme::all();
+        $artists = Artist::all();
+        return view('pinball_machines.edit')->with('pinball', $pinballMachine[0])
+                                            ->with('manufacturers', $manufacturers)
+                                            ->with('mpus', $mpus)
+                                            ->with('types', $types)
+                                            ->with('themes', $themes)
+                                            ->with('artists', $artists);
     }
 
     /**
@@ -72,7 +98,8 @@ class PinballMachineController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        PinballMachine::updatePinballMachine($id, $request);
+        return redirect()->action('PinballMachineController@show', [$id]);
     }
 
     /**
@@ -83,6 +110,7 @@ class PinballMachineController extends Controller
      */
     public function destroy($id)
     {
-        return view('welcome');
+        PinballMachine::deletePinballMachine($id);
+        return redirect()->action('PinballMachineController@index');
     }
 }

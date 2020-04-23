@@ -17,8 +17,6 @@
         <script src="https://kit.fontawesome.com/15cb2ce2e0.js" crossorigin="anonymous"></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <!-- Styles -->
-        <link href="https://storage.googleapis.com/dbc-next/cdn/core-admin/css/admin-style.css" rel="stylesheet" type="text/css">
         <style>
             html, body {
                 background-color: #fff;

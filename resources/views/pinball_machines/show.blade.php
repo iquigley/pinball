@@ -22,18 +22,13 @@
 <h1>{{$pinballMachine->name}}({{$pinballMachine->common_abbreviations}})</h1>
 <div class='container'>
     <div class='row'>
+        <div class='col-sm-12'>
+            <a href='/pinball/'><button class='btn btn-primary'>Exit <i class='far fa-hand-peace'></i></button></a>
+            <a href='/pinball/edit/{{$pinballMachine->id}}'><button class='btn btn-primary'>Edit <i class='far fa-edit'></i></button></a>
+        </div>
+    </div>
+    <div class='row'>
         <div class='col-sm-6 col-xs-12'>
-
-            <div class='info-block'>
-                <div class='info-block-header'>
-                    <strong>Themes</strong>
-                </div>
-                <div class='info-block-value'>
-                    @foreach($themes as $theme)
-                    {{$theme->name}}
-                    @endforeach
-                </div>
-            </div>
 
             <div class='info-block'>
                 <div class='info-block-header'>
@@ -113,6 +108,17 @@
                 </div>
                 <div class='info-block-value'>
                     {{$pinballMachine->production}}
+                </div>
+            </div>
+
+            <div class='info-block'>
+                <div class='info-block-header'>
+                    <strong>Themes</strong>
+                </div>
+                <div class='info-block-value'>
+                    @foreach($themes as $theme)
+                    {{$theme->name}}
+                    @endforeach
                 </div>
             </div>
 

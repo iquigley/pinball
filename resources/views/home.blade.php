@@ -6,7 +6,6 @@ Mega Pinball Challenge Extreme!
 
 @section('content')
 
-    <hr/>
     <div class="links">
         <a target="_blank" href="https://www.catawiki.com/stories/3297-the-history-of-pinball-in-10-funfacts">History of Pinball</a>
         <a target="_blank" href="https://toytheater.com/space-pinball/">Play Pinball</a>

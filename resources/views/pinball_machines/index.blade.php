@@ -8,7 +8,8 @@
 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
-                            <a href="pinball/add"><button>Add New</button></a>
+                            <a href="/"><button class='btn btn-primary'>Home <i class='fas fa-home'></i></button></a>
+                            <a href="/pinball/create"><button class='btn btn-primary'>Add New <i class='fas fa-plus'></i></button></a>
                             <table class='table table-striped table-bordered table-hover'>
                                 <thead>
                                     <tr>
@@ -28,16 +29,16 @@
                                     @else
                                         @foreach ($pinballMachines as $pinball)
                                         <tr>
-                                            <td><a href='pinball/{{$pinball->id}}' target='_self' ></a>{{$pinball->id}}</td>
+                                            <td>{{$pinball->id}}</td>
                                             <td>Image</td>
                                             <td>{{$pinball->name}}</td>
                                             <td>{{$pinball->id}}</td>
                                             <td>{{$pinball->manufacturer}}</td>
                                             <td>{{$pinball->date_of_manufacture}}</td>
-                                            <td class="table-button"><a href="{{$pinball->id}}"><i class="far fa-eye" aria-hidden="true"></i></a></td>
+                                            <td class="table-button"><a href="/pinball/show/{{$pinball->id}}"><i class="far fa-eye" aria-hidden="true"></i></a></td>
                                             <td class="table-button">
-                                                <a href='update/{{$pinball->id}}' ><i id='' class='fa fa-pencil-square-o' style='margin-right:4px;' aria-hidden='true'></i></a>
-                                                <a href='delete/{{$pinball->id}}' data-method='delete' onclick='return confirmDelete()' ><i id='' class='fa fa-trash' aria-hidden='true'></i></a>
+                                                <a href='/pinball/edit/{{$pinball->id}}' ><i id='' class='fa fa-pencil-square-o' style='margin-right:4px;' aria-hidden='true'></i></a>
+                                                <a href='/pinball/delete/{{$pinball->id}}' data-method='delete' onclick='return confirmDelete()' ><i id='' class='fa fa-trash' aria-hidden='true'></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
