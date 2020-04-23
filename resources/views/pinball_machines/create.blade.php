@@ -30,7 +30,7 @@
                 @csrf
                 <hr/>
                 <div class='row'>
-                    <div class='col-sm-12'>
+                    <div class='col-sm-6'>
                         <div class='form-group'>
                             <div class='col-sm-12'>
                                 <label for='name' class='pull-left'>Name</label>
@@ -38,8 +38,11 @@
                             </div>
                         </div>
                     </div>
+                    <div class='col-sm-6'>
+                        <div id='image-drop-zone-container'></div>
+                    </div>
                 </div>
-
+                <hr/>
 
                 <div class='row'>
                     <div class='col-sm-6 col-xs-12'>
