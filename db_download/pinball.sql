@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 23, 2020 at 03:28 AM
+-- Generation Time: Apr 23, 2020 at 04:07 PM
 -- Server version: 5.7.25
 -- PHP Version: 7.3.1
 
@@ -32,7 +32,7 @@ CREATE TABLE `artists` (
   `id` int(11) NOT NULL,
   `uuid` varchar(32) CHARACTER SET utf8 NOT NULL,
   `name` varchar(128) CHARACTER SET utf8 NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -55,7 +55,7 @@ CREATE TABLE `country` (
   `uuid` varchar(32) CHARACTER SET utf8 NOT NULL,
   `name` varchar(32) CHARACTER SET utf8 NOT NULL,
   `abbreviation` varchar(4) CHARACTER SET utf8 DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -105,7 +105,7 @@ CREATE TABLE `manufacturers` (
   `year_active` int(11) DEFAULT NULL,
   `year_inactive` int(11) DEFAULT NULL,
   `trade_name` varchar(128) CHARACTER SET utf8 DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -146,7 +146,7 @@ CREATE TABLE `mpus` (
   `id` int(11) NOT NULL,
   `uuid` varchar(32) CHARACTER SET utf8 NOT NULL,
   `name` varchar(128) CHARACTER SET utf8 NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -168,7 +168,7 @@ CREATE TABLE `pinball_images` (
   `uuid` varchar(32) CHARACTER SET utf8 NOT NULL,
   `pinball_uuid` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
   `file_name` varchar(256) CHARACTER SET utf8 NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -186,7 +186,7 @@ CREATE TABLE `pinball_machines` (
   `number_of_players` int(11) DEFAULT NULL,
   `ipd_number` int(11) DEFAULT NULL,
   `date_of_manufacture` date DEFAULT NULL,
-  `average_fun_rating` decimal(3,1) NOT NULL,
+  `average_fun_rating` decimal(3,1) NOT NULL DEFAULT '0.0',
   `common_abbreviations` varchar(16) CHARACTER SET utf8 DEFAULT NULL,
   `manufacturer_uuid` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
   `mpu_uuid` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
@@ -205,7 +205,7 @@ CREATE TABLE `pinball_machines` (
   `notes` text CHARACTER SET utf8,
   `marketing_slogan` text CHARACTER SET utf8,
   `video_link` varchar(256) CHARACTER SET utf8 DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -226,7 +226,7 @@ CREATE TABLE `pinball_types` (
   `id` int(11) NOT NULL,
   `uuid` varchar(32) CHARACTER SET utf8 NOT NULL,
   `name` varchar(128) CHARACTER SET utf8 NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -247,7 +247,7 @@ CREATE TABLE `pinball_with_themes` (
   `id` int(11) NOT NULL,
   `pinball_uuid` varchar(32) CHARACTER SET utf8 NOT NULL,
   `theme_uuid` varchar(32) CHARACTER SET utf8 NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -269,7 +269,7 @@ CREATE TABLE `themes` (
   `id` int(11) NOT NULL,
   `uuid` varchar(32) CHARACTER SET utf8 NOT NULL,
   `name` varchar(128) CHARACTER SET utf8 NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -309,7 +309,7 @@ CREATE TABLE `us_states` (
   `uuid` varchar(32) CHARACTER SET utf8 NOT NULL,
   `name` varchar(32) CHARACTER SET utf8 NOT NULL,
   `abbreviation` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -453,7 +453,7 @@ ALTER TABLE `artists`
 -- AUTO_INCREMENT for table `country`
 --
 ALTER TABLE `country`
-  MODIFY `id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -489,7 +489,7 @@ ALTER TABLE `pinball_images`
 -- AUTO_INCREMENT for table `pinball_machines`
 --
 ALTER TABLE `pinball_machines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `pinball_types`
@@ -501,7 +501,7 @@ ALTER TABLE `pinball_types`
 -- AUTO_INCREMENT for table `pinball_with_themes`
 --
 ALTER TABLE `pinball_with_themes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `themes`
