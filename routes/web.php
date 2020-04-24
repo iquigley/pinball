@@ -22,3 +22,5 @@ Route::get('/pinball/create/', "PinballMachineController@create");
 Route::post('/pinball/store/', "PinballMachineController@store");
 Route::get('/pinball/edit/{id}', 'PinballMachineController@edit');
 Route::post('/pinball/update/{id}', 'PinballMachineController@update');
+Route::post('/pinball/photo-upload/', 'PinballImageController@upload');
+Route::post('/pinball/get-photos/', "PinballImageController@load");

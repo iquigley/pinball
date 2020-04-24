@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 23, 2020 at 10:58 PM
+-- Generation Time: Apr 23, 2020 at 10:55 PM
 -- Server version: 5.7.25
 -- PHP Version: 7.3.1
 
@@ -36,6 +36,14 @@ CREATE TABLE `artists` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `artists`
+--
+
+INSERT INTO `artists` (`id`, `uuid`, `name`, `created_at`, `updated_at`) VALUES
+(1, '5ea0fcfa3a075', 'Pat Lawlor', NULL, NULL),
+(2, '5ea0fcfa3b066', 'John Youssi', '2020-04-22 04:00:00', '2020-04-22 04:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -50,6 +58,21 @@ CREATE TABLE `country` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `country`
+--
+
+INSERT INTO `country` (`id`, `uuid`, `name`, `abbreviation`, `created_at`, `updated_at`) VALUES
+(1, 'mdb_562a95f8ccc4e', 'Andorra', 'AD', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(2, 'mdb_562a95f8ccc59', 'United Arab Emirates', 'AE', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(3, 'mdb_562a95f8ccc5e', 'Afghanistan', 'AF', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(4, 'mdb_562a95f8ccc63', 'Antigua and Barbuda', 'AG', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(5, 'mdb_562a95f8ccc67', 'Anguilla', 'AI', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(6, 'mdb_562a9630a176c', 'Yemen', 'YE', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(7, 'mdb_562a9630a1771', 'Mayotte', 'YT', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(8, 'mdb_562a9630a1775', 'South Africa', 'ZA', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(9, 'mdb_562a9630a177a', 'Zambia', 'ZM', '2020-04-22 04:00:00', '2020-04-22 04:00:00');
 
 -- --------------------------------------------------------
 
@@ -86,6 +109,13 @@ CREATE TABLE `manufacturers` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `manufacturers`
+--
+
+INSERT INTO `manufacturers` (`id`, `uuid`, `name`, `city`, `state_uuid`, `country_uuid`, `year_active`, `year_inactive`, `trade_name`, `created_at`, `updated_at`) VALUES
+(1, '5ea0fcfa3a077', 'Midway Manufacturing Company', 'Chicago', 'mdb_562a934d7946e', 'mdb_562a95f8ccc59', 1988, 1999, 'Bally', '2020-04-22 04:00:00', '2020-04-22 04:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -97,6 +127,14 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2019_08_19_000000_create_failed_jobs_table', 1);
 
 -- --------------------------------------------------------
 
@@ -112,6 +150,13 @@ CREATE TABLE `mpus` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `mpus`
+--
+
+INSERT INTO `mpus` (`id`, `uuid`, `name`, `created_at`, `updated_at`) VALUES
+(1, '5ea0fcfa3a076', 'Williams WPC (Fliptronics 2)', '2020-04-22 04:00:00', '2020-04-22 04:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -126,6 +171,23 @@ CREATE TABLE `pinball_images` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pinball_images`
+--
+
+INSERT INTO `pinball_images` (`id`, `uuid`, `pinball_uuid`, `file_name`, `created_at`, `updated_at`) VALUES
+(2, '5ea227607992b', '5ea0fcfa3a999', 'storage/img/cEdtUwWPwjljpIlY4ArhZlZ3BO1B1CnpNJN3Omz5.png', '2020-04-24 03:40:16', '2020-04-24 03:40:16'),
+(3, '5ea227771bb37', '5ea0fcfa3a999', 'storage/img/jWFxm4TzNnwamH27uNJsSjJWIZPQUKQhjL6FSnaH.png', '2020-04-24 03:40:39', '2020-04-24 03:40:39'),
+(4, '5ea22d3e1c217', '5ea0fcfa3a999', 'storage/img/O7PBZgLLrX9w7Hvyojv2Yd9pdhTLWtPN4t4gRf34.png', '2020-04-24 04:05:18', '2020-04-24 04:05:18'),
+(6, '5ea22f58a0368', '5ea0fcfa3a999', 'storage/img/NBKlkQvocFeFOZ0hmsf6nu4LReVRusyyWIKD2Dm2.png', '2020-04-24 04:14:16', '2020-04-24 04:14:16'),
+(7, '5ea22f82d8a92', '5ea0fcfa3a999', 'storage/img/uPlYa7t9YVyunlfGLruzpaAOBfwDldqATXtLSwOF.png', '2020-04-24 04:14:58', '2020-04-24 04:14:58'),
+(8, '5ea22f872f991', '5ea0fcfa3a999', 'storage/img/2DpU6pnztUGCGBtdgnraIEDZlcsHSqSJ01WU1dn1.png', '2020-04-24 04:15:03', '2020-04-24 04:15:03'),
+(9, '5ea22f893ecce', '5ea0fcfa3a999', 'storage/img/MhnmyfqvFLZlBJCazluXHSlGsemzgrmi3dvWdZfp.png', '2020-04-24 04:15:05', '2020-04-24 04:15:05'),
+(10, '5ea22f8c7f4d2', '5ea0fcfa3a999', 'storage/img/MmsnNf1StyKwlwXTe6gRnZicgpjM1sF2OzdjGOMr.png', '2020-04-24 04:15:08', '2020-04-24 04:15:08'),
+(11, '5ea22f8e43059', '5ea0fcfa3a999', 'storage/img/r4RQ046Mt2j5P1pfSlkZDGObQjx8f6pgc2xvYApi.png', '2020-04-24 04:15:10', '2020-04-24 04:15:10'),
+(12, '5ea22f9099128', '5ea0fcfa3a999', 'storage/img/okxsPRXm1YbF4FplUsvGbF8ckSv4Oqcdbxwzo8T6.png', '2020-04-24 04:15:12', '2020-04-24 04:15:12'),
+(13, '5ea24b1979162', '5ea0fcfa3a999', 'storage/img/tNmsKDOlBsKOUeSe6CWZ19u1I9lhZCX8ILXpjIe2.png', '2020-04-24 06:12:41', '2020-04-24 06:12:41');
 
 -- --------------------------------------------------------
 
@@ -164,6 +226,13 @@ CREATE TABLE `pinball_machines` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `pinball_machines`
+--
+
+INSERT INTO `pinball_machines` (`id`, `uuid`, `name`, `model_number`, `number_of_players`, `ipd_number`, `date_of_manufacture`, `average_fun_rating`, `common_abbreviations`, `manufacturer_uuid`, `mpu_uuid`, `type_uuid`, `production`, `notable_features`, `toys`, `concept_art_uuid`, `design_by_uuid`, `art_by_uuid`, `dots_animation_by_uuid`, `mechanics_by_uuid`, `music_by_uuid`, `sound_by_uuid`, `software_by_uuid`, `notes`, `marketing_slogan`, `video_link`, `created_at`, `updated_at`) VALUES
+(1, '5ea0fcfa3a999', 'Twilight Zone', '50020', 4, 2684, '1993-04-05', '8.4', 'TZ', '5ea0fcfa3a077', '5ea0fcfa3a076', '5ea0fcfa3a074', 15235, 'Flippers (4), Pop bumpers (3), Ramps (2), Dual left inlanes, \"Rocket\" kicker. Dual autoplunger/manual plunger arrangement. Maximum 1 buy-in ball per player (operator option).\r\n\r\nMagnets on the main playfield are situated on the looping lane and catch the ball to aid in hitting shots into the camera and piano. They are not under player control.\r\n\r\nMagnets on the mini-playfield \'flip\' the ball during \"Battle the Power\" mode when the player presses the flipper buttons.\r\n\r\nThe \"Powerball\" is a ceramic pinball about 20% lighter than a steel pinball, much faster, and not affected by the game\'s magnets.\r\n\r\nFive possible multiball modes:\r\n\"Powerball Mania\", 3-ball;\r\n\"Fast Lock\", 3-ball;\r\n\"Lost in the Zone\", 6-ball wizard mode;\r\n\"Regular Multiball\", 3-ball sequential release, without 3rd magnet installed;\r\n\"Regular Multiball\", 3-ball simultaneous release, with 3rd magnet installed.', 'Mini playfield that uses magnets for flipper-like action; Real working gumball machine on playfield that dispenses pinballs; Working analog clock; tells time in attract mode, times most modes during game play.', '5ea0fcfa3a075', '5ea0fcfa3b066', '5ea0fcfa3a075', '5ea0fcfa3a075', '5ea0fcfa3a075', '5ea0fcfa3a075', '5ea0fcfa3a075', '5ea0fcfa3a075', 'This game was part of Williams/Midway\'s \"SuperPin\" line of widebody games.\r\n\r\nVoice-over artist Tim Kitzrow provided the voice of Rod Serling.\r\n\r\nRod Serling\'s likeness had to be licensed separately from the \"Twilight Zone\" name.\r\n\r\nRetrofit instructions for third playfield magnet (removed in production games) available\r\nhere.\r\n\r\nAn article by Ted Estes about designing Twilight Zone is available at\r\nGameRoom Magazine.\r\n\r\nAnother article shows differences between prototype and production games. Here is an Italian language translation.\r\n\r\nTwilight Zone was originally to be the first game to use Williams\' then-new DCS Sound System (which would actually be introduced for Williams\' 1993 \'Indiana Jones: The Pinball Adventure\'), but due to time constraints concerning the production of the DCS board, the music was recomposed for the Yamaha YM2151/Harris CVSD audio board. It is also therefore the last game to use that audio board.\r\n\r\nWe asked Chris Granner to tell us about the music for this game. He replies:\r\n\r\nThe main play tune for TZ is a WPC (synthesized) version of the loooonnnng guitar solo section from Golden Earring\'s \"Twilight Zone\". The Jackpot tune is a WPC version of the CHORUS of that song, where you hear the main melody of the song. There are snippets and takeoffs from dozens of TV show moments, way too many to list. The actual AUDIO from either of these sources is NOT reproduced in TZ pinball.\r\n\r\nIn this listing is an image of a playfield under blacklighting, revealing a serial number. We asked Pat Lawlor why the manufacturer did this. He replies:\r\n\r\nThe reason for the serial numbers seems strange by today\'s standards. In 1992, Williams\' agreement with its distributors gave them exclusive sales right to a territory. They did not have the right to sell outside of their territory. But some were doing just that. In order to track the game\'s origin from a distributor into the wild, the blacklight number was added. Williams knew where the game was originally shipped. If the game turned up outside of that territory, it was assumed that the distributor had \"Bootlegged\" the game outside of his territory. Then it was up to management to decide what penalty to incur on the offender. Remember, this was during a time when it was PROFITABLE to sell and operate pinball machines. This practice would be laughable today because ANY sale of a pinball machine is a good sale.', '\"Twilight Zone includes more features with patents pending than any other game in history!\"\r\n\"Enter Into a New Age of Pinball\"\r\n\"The Profit Zone. (with PlayMeter and Replay ratings)\"\r\n\"You have just crossed over... into the Twilight Zone\"', 'https://www.youtube.com/watch?v=LyI0c4sRN_w', '2020-04-22 04:00:00', '2020-04-22 04:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -177,6 +246,13 @@ CREATE TABLE `pinball_types` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pinball_types`
+--
+
+INSERT INTO `pinball_types` (`id`, `uuid`, `name`, `created_at`, `updated_at`) VALUES
+(1, '5ea0fcfa3a074', 'Solid State Electronics (SS)', '2020-04-22 04:00:00', '2020-04-22 04:00:00');
 
 -- --------------------------------------------------------
 
@@ -192,6 +268,14 @@ CREATE TABLE `pinball_with_themes` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `pinball_with_themes`
+--
+
+INSERT INTO `pinball_with_themes` (`id`, `pinball_uuid`, `theme_uuid`, `created_at`, `updated_at`) VALUES
+(1, '5ea0fcfa3a999', '5ea0fcfa3g077', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(2, '5ea0fcfa3a999', '5ea0fcfa4c066', '2020-04-22 04:00:00', '2020-04-22 04:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -205,6 +289,14 @@ CREATE TABLE `themes` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `themes`
+--
+
+INSERT INTO `themes` (`id`, `uuid`, `name`, `created_at`, `updated_at`) VALUES
+(1, '5ea0fcfa3g077', 'Adventure', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(2, '5ea0fcfa4c066', 'Supernatural', '2020-04-22 04:00:00', '2020-04-22 04:00:00');
 
 -- --------------------------------------------------------
 
@@ -237,6 +329,21 @@ CREATE TABLE `us_states` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `us_states`
+--
+
+INSERT INTO `us_states` (`id`, `uuid`, `name`, `abbreviation`, `created_at`, `updated_at`) VALUES
+(1, 'mdb_562a934d79439', 'Alabama', 'al', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(2, 'mdb_562a934d7945a', 'Alaska', 'ak', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(3, 'mdb_562a934d79465', 'Arizona', 'az', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(4, 'mdb_562a934d7946a', 'Arkansas', 'ar', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(5, 'mdb_562a934d7946e', 'California', 'ca', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(6, 'mdb_562a934d79543', 'Washington', 'wa', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(7, 'mdb_562a934d7954e', 'Wisconsin', 'wi', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(8, 'mdb_562a934d79553', 'Wyoming', 'wy', '2020-04-22 04:00:00', '2020-04-22 04:00:00'),
+(9, 'mdb_562a934d79559', 'Washington DC', 'dc', '2020-04-22 04:00:00', '2020-04-22 04:00:00');
 
 --
 -- Indexes for dumped tables
@@ -363,7 +470,7 @@ ALTER TABLE `artists`
 -- AUTO_INCREMENT for table `country`
 --
 ALTER TABLE `country`
-  MODIFY `id` int(16) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -375,49 +482,49 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `manufacturers`
 --
 ALTER TABLE `manufacturers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `mpus`
 --
 ALTER TABLE `mpus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pinball_images`
 --
 ALTER TABLE `pinball_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `pinball_machines`
 --
 ALTER TABLE `pinball_machines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `pinball_types`
 --
 ALTER TABLE `pinball_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pinball_with_themes`
 --
 ALTER TABLE `pinball_with_themes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `themes`
 --
 ALTER TABLE `themes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -429,7 +536,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `us_states`
 --
 ALTER TABLE `us_states`
-  MODIFY `id` int(16) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables

@@ -1,12 +1,28 @@
 <?php
-
 namespace App;
 
+/**
+ * The PinballMachine class manages pinball machines. It uses hard-coded SQL queries
+ * instead of relying on the built-in Eloquent and entity relationship engines of Laravel.
+ *
+ * @author Ike Quigley
+ * Last Updated: 04/23/2020
+ */
+
 use Illuminate\Database\Eloquent\Model;
+use App\PinballImage as PinballImage;
 use \DB;
 
 class PinballMachine extends Model
 {
+
+    /**
+     * Returns the url of the first image uploaded to the system for this Pinball machine.
+     * @return String
+     */
+    public function getCoverImageLink() {
+        return PinballImage::getCoverPhotoForPinball($this->uuid);
+    }
 
     /**
      * Loads all Pinball Object joined with the manufacturer Object.
@@ -16,6 +32,7 @@ class PinballMachine extends Model
     {
 $query=<<<QUERY
     SELECT pinball_machines.id as id,
+           pinball_machines.uuid as uuid,
            pinball_machines.name as name,
            pinball_machines.model_number,
            pinball_machines.date_of_manufacture as date_of_manufacture,
@@ -23,7 +40,7 @@ $query=<<<QUERY
     FROM   pinball_machines
     LEFT JOIN   manufacturers ON pinball_machines.manufacturer_uuid = manufacturers.uuid;
 QUERY;
-        return DB::select(DB::raw($query));
+        return static::hydrate(DB::select(DB::raw($query)));
     }
 
 
@@ -65,7 +82,8 @@ FROM  pinball_machines
       LEFT JOIN mpus ON pinball_machines.mpu_uuid = mpus.uuid
 WHERE pinball_machines.id = {$id}
 QUERY;
-        return DB::select(DB::raw($query));
+        $pinballs = DB::select(DB::raw($query));
+        return $pinballs[0];
     }
 
 
@@ -132,7 +150,6 @@ QUERY;
         return $pinball->id;
     }
 
-
     /**
      * Updates the themes associated with this PinballMachine
      * @param String $pinball_uuid
@@ -153,9 +170,8 @@ QUERY;
         }
     }
 
-
     /**
-     * Inidcates whether or not the given PinballMachine uuid is attached to the given Theme uuid.
+     * Indicates whether or not the given PinballMachine uuid is attached to the given Theme uuid.
      * @param type $pinball
      * @param type $type
      * @return type

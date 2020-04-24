@@ -5,6 +5,10 @@
 @endsection
 
 @section('content')
+<script src="/drop/dropzone.min.js"></script>
+<link  href="/drop/dropzone.min.css" rel="stylesheet" />
+
+
 <style>
     .form-group{
         margin-top: 15px;
@@ -18,14 +22,49 @@
         overflow-y: scroll;
         float:none;
     }
+    #uploaded-pinball-image-container{
+        height: auto;
+        min-height: 150px;
+        background-color: lightgray;
+        display: block;
+    }
+
+    .drop-zone-container{
+        min-height: 200px;
+    }
+
+    .preview-image{
+        max-height: 100px;
+    }
+
 
 </style>
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-10 col-md-offset-1">
-            <h2>Add a New Pinball Machine</h2>
-            <a href='/pinball'><button class='btn btn-primary'>Exit <i class='far fa-hand-peace'></i></button></a>
+        <div class="col-sm-12">
+            <div class='row'>
+                <div class='col-md-12'>
+                    <h2>Add a New Pinball Machine</h2>
+                    <a href='/pinball'><button class='btn btn-primary'>Exit <i class='far fa-hand-peace'></i></button></a>
+                </div>
+            </div>
+            <hr/>
+            <div class='row'>
+                <div id='uploaded-pinball-image-container' class='col-sm-6'>
+                    @foreach($images as $image)
+                        <img src='/{{$image->file_name}}' class='preview-image img-thumbnail float-left' />
+                    @endforeach
+                </div>
+                <div class='col-sm-6 drop-zone-container'>
+                    <form id='drop_zone_image' action='/pinball/photo-upload' class="dropzone form-horizontal" enctype='multipart/form-data' method='post'>
+                        @csrf
+                        <input type='hidden' name='pinball_uuid' value='{{$pinball->uuid}}' />
+                    </form>
+                </div>
+                <hr/>
+            </div>
+
             <form method='post' action='/pinball/update/{{$pinball->id}}'>
                 @csrf
                 <hr/>
@@ -39,7 +78,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 <div class='row'>
                     <div class='col-sm-6 col-xs-12'>
@@ -117,11 +155,9 @@
                             </div>
                         </div>
 
-
                     </div>
 
                     <div class='col-sm-6 col-xs-12'>
-
 
                         <div class='form-group input-block'>
                             <label for='common_abbreviations' class='pull-left'>Common Abbreviations</label>
@@ -264,12 +300,29 @@
 
                 <button class='btn btn-secondary'>Update</button>
 
-
-
-
             </form>
 
         </div>
     </div>
 </div>
+
+
+<script>
+    Dropzone.autoDiscover = false;
+    var thisDropZone = new Dropzone("#drop_zone_image", {
+        dictDefaultMessage: "Drop Pinball Images Here"
+    });
+    thisDropZone.on("complete", function(file) {
+        thisDropZone.removeFile(file);
+    });
+    thisDropZone.on("success", function (file, data) {
+        // Success.
+        var newImage = JSON.parse(data);
+        // Update the preview image.
+        updatePreviewImage(newImage.url);
+    });
+    function updatePreviewImage(imageUrl){
+        $("#uploaded-pinball-image-container").append("<img class='preview-image img-thumbnail float-left' src='/" + imageUrl +  " ' />");
+    };
+</script>
 @endsection

@@ -64,7 +64,7 @@ class PinballMachineController extends Controller
     {
         $pinballMachine = PinballMachine::loadRelatedObjectById($id);
         $themes = PinballMachine::loadPinballThemes($id);
-        return view('pinball_machines.show')->with('pinballMachine', $pinballMachine[0])->with('themes',$themes);
+        return view('pinball_machines.show')->with('pinballMachine', $pinballMachine)->with('themes',$themes);
     }
 
     /**
@@ -81,12 +81,14 @@ class PinballMachineController extends Controller
         $types = PinballType::all();
         $themes = Theme::all();
         $artists = Artist::all();
-        return view('pinball_machines.edit')->with('pinball', $pinballMachine[0])
+        $images = \App\PinballImage::loadImagesForPinballMachine($pinballMachine);
+        return view('pinball_machines.edit')->with('pinball', $pinballMachine)
                                             ->with('manufacturers', $manufacturers)
                                             ->with('mpus', $mpus)
                                             ->with('types', $types)
                                             ->with('themes', $themes)
-                                            ->with('artists', $artists);
+                                            ->with('artists', $artists)
+                                            ->with('images', $images);
     }
 
     /**

@@ -24,7 +24,7 @@
     <div class='row'>
         <div class='col-sm-12'>
             <a href='/pinball/'><button class='btn btn-primary'>Exit <i class='far fa-hand-peace'></i></button></a>
-            <a href='/pinball/edit/{{$pinballMachine->id}}'><button class='btn btn-primary'>Edit <i class='far fa-edit'></i></button></a>
+            <a href='/pinball/edit/{{$pinballMachine->id}}'><button class='btn btn-primary'>Edit & Add Images <i class='far fa-edit'></i></button></a>
         </div>
     </div>
     <div class='row'>
